@@ -115,5 +115,6 @@ module.exports = function (grunt) {
 
   grunt.registerTask('default', ['clean:assets', 'sass:dev', 'handlebars', 'requirejs:dev', 'concat', 'clean:temp']);
   grunt.registerTask('release', ['clean:assets', 'sass:prod', 'handlebars', 'requirejs:prod', 'concat', 'uglify', 'clean:temp']);
+  grunt.registerTask('heroku', ['release']);
 
 };
