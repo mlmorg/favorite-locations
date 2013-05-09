@@ -85,6 +85,13 @@ module.exports = function (grunt) {
       }
     },
 
+    uglify: {
+      prod: {
+        src: ['public/assets/application.js'],
+        dest: 'public/assets/application.js'
+      }
+    },
+
     clean: {
       temp: ['temp/'],
       assets: ['public/assets/']
@@ -104,8 +111,9 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-contrib-uglify');
 
-  grunt.registerTask('default', ['sass:dev', 'handlebars', 'requirejs:dev', 'concat', 'clean:temp']);
-  grunt.registerTask('release', ['clean:assets', 'sass:dist', 'handlebars', 'requirejs:dist', 'concat', 'clean:temp']);
+  grunt.registerTask('default', ['clean:assets', 'sass:dev', 'handlebars', 'requirejs:dev', 'concat', 'clean:temp']);
+  grunt.registerTask('release', ['clean:assets', 'sass:prod', 'handlebars', 'requirejs:prod', 'concat', 'uglify', 'clean:temp']);
 
 };
