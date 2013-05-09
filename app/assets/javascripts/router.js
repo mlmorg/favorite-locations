@@ -12,8 +12,7 @@ define(function (require, exports, module) {
     },
 
     home: function () {
-      var view = new Locations.Views.List();
-      app.insertView(view).render();
+      app.layout(new Locations.Views.List());
     }
 
   });

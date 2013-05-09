@@ -31,6 +31,10 @@ define(function (require, exports, module) {
       } else {
         this.router.navigate(url, true);
       }
+    },
+
+    layout: function (view) {
+      return this.setView('main', view).render();
     }
   });
 

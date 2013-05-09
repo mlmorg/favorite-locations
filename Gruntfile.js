@@ -21,7 +21,7 @@ module.exports = function (grunt) {
         files: [{
           expand: true,
           cwd: 'app/assets/stylesheets/',
-          src: '*.scss',
+          src: '*.less',
           dest: 'public/assets/',
           ext: '.css'
         }]
@@ -30,7 +30,7 @@ module.exports = function (grunt) {
         files: [{
           expand: true,
           cwd: 'app/assets/stylesheets/',
-          src: '*.scss',
+          src: '*.less',
           dest: 'public/assets/',
           ext: '.css'
         }]
@@ -95,7 +95,7 @@ module.exports = function (grunt) {
     },
 
     watch: {
-      files: ['app/assets/stylesheets/**/*.scss', '<%= jshint.dev.src %>'],
+      files: ['app/assets/stylesheets/**/*.less', '<%= jshint.dev.src %>'],
       tasks: 'default'
     }
 

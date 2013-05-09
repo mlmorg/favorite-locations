@@ -1,0 +1,64 @@
+// global elements
+// ---------------
+
+html, body, #container {
+  width: 100%;
+  height: 100%;
+}
+
+#container {
+  padding-top: 50px;
+  .boxsizing(border-box);
+
+  > header {
+    position: absolute;
+    width: 100%;
+    height: 50px;
+    padding: 8px;
+    top: 0;
+    background: @secondary-bg;
+    border-bottom: 1px solid @secondary-highlight;
+    z-index: 100;
+    .boxsizing(border-box);
+    .clearfix();
+  }
+
+  > .scroll {
+    position: relative;
+  }
+}
+
+.main-wrapper {
+  max-width: 750px;
+  margin: 0 auto;
+}
+
+main {
+  padding: 5%;
+}
+
+// header elements
+// ---------------
+
+header > h1 {
+  float: left;
+  margin: 2px 0 0 5px;
+}
+
+header > button {
+  float: right;
+}
+
+// scroll content areas
+// --------------------
+
+.scroll, .scroll > .outer {
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.scroll > .outer > .inner {
+  position: relative;
+}
