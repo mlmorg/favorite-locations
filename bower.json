@@ -1,0 +1,13 @@
+{
+  "name": "favorite-locations",
+  "version": "0.1.0",
+  "dependencies": {
+    "jquery": "~2.0.0",
+    "underscore": "~1.4.4",
+    "backbone": "~1.0.0",
+    "almond": "~0.2.5",
+    "handlebars.js": "~1.0.10",
+    "layoutmanager": "git://github.com/tbranyen/backbone.layoutmanager.git#~0.8.7",
+    "backbone.canal": "git://github.com/mlmorg/backbone.canal.git#~0.1.0"
+  }
+}

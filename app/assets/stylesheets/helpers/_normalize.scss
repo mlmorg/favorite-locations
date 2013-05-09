@@ -1,0 +1,261 @@
+// Adapted from http://necolas.github.com/normalize.css/
+
+// HTML DISPLAY DEFINITIONS
+// -------
+
+article, aside, details, figcaption, figure, footer, header, hgroup, main, nav, section, summary {
+	display: block;
+}
+
+audio, canvas, video {
+	display: inline-block;
+	*display: inline;
+	*zoom: 1;
+}
+
+audio:not([controls]) {
+	display: none;
+	height: 0;
+}
+
+[hidden] {
+	display: none;
+}
+
+// BASE
+// -------
+
+html {
+	font-size: 100%;
+	-webkit-text-size-adjust: 100%;
+	-ms-text-size-adjust: 100%;
+}
+
+html, button, input, select, textarea {
+	font-family: $base-font-family; // addresses font-family inconsistencies
+  color: $base-font-color;
+	-webkit-font-smoothing: $font-smoothing; // better text rendering in webkit
+}
+
+body {
+	margin: 0;
+	background: $body-bg;
+	font-size: $base-font-size;
+	line-height: $base-line-height;
+}
+
+// LINKS
+// -------
+
+a {
+	color: $link-color;
+	text-decoration: $link-decoration;
+	
+	&:hover {
+		color: $link-hover-color;
+		text-decoration: $link-hover-decoration;
+	}
+}
+
+// TYPOGRAPY
+// -------
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+	font-family: $heading-font-family;
+	font-weight: $heading-font-weight;
+  color: $heading-font-color;
+	text-rendering: optimizelegibility; // fix character spacing for headings
+}
+
+abbr[title] {
+	border-bottom: 1px dotted;
+}
+
+b, strong {
+	font-weight: bold;
+}
+
+blockquote {
+	margin: $base-font-size 40px;
+}
+
+dfn {
+	font-style: italic;
+}
+
+mark {
+	background: #ff0;
+	color: #000;
+}
+
+p, pre {
+	margin: ($base-font-size / 2) 0;
+}
+
+pre, code, kbd, samp {
+	font-family: $mono-font-family; // corrects font-family set oddly in S4/5 & Chrome
+	_font-family: "Courier New", monospace; // IE6 font-family
+	font-size: 1em;
+}
+
+pre {
+	white-space: pre;
+	white-space: pre-wrap;
+	word-wrap: break-word;
+}
+
+q {
+	quotes: none;
+	&:before, &:after {
+		content: '';
+		content: none;
+	}
+}
+
+small {
+	font-size: $small-font-size;
+}
+
+sub, sup {
+	position: relative;
+	font-size: 75%;
+	line-height: 0;
+	vertical-align: baseline;
+}
+sup {
+	top: -0.5em;
+}
+sub {
+	bottom: -0.25em;
+}
+
+// LISTS
+// -------
+
+dl, menu, ol, ul {
+	margin: 1em 0;
+}
+
+dd {
+	margin: 0 0 0 40px;
+}
+
+menu, ol, ul {
+	padding: 0 0 0 40px;
+}
+
+// lists within a nav or menu element should be unstyled
+// we also setup an .unstyled class for specific use
+nav ul, nav ol, menu ul, menu ol, ul.unstyled, ol.unstyled {
+	list-style: none;
+	list-style-image: none;
+	margin: 0;
+	padding: 0;
+}
+
+// EMBEDDED CONTENT
+// -------
+
+img {
+	border: 0;
+	-ms-interpolation-mode: bicubic;
+}
+
+svg:not(:root) {
+	overflow: hidden;
+}
+
+// FIGURES
+// -------
+
+figure {
+	margin: 0;
+}
+
+// FORMS
+// -------
+
+form {
+	margin: 0;
+}
+
+fieldset {
+	border: 1px solid #c0c0c0;
+	margin: 0 2px;
+	padding: 0.35em 0.625em 0.75em;
+}
+
+legend {
+	border: 0;
+	padding: 0;
+	white-space: normal;
+	*margin-left: -7px;
+}
+
+button, input, select, textarea {
+	font-size: 100%;
+	margin: 0;
+	vertical-align: baseline;
+	*vertical-align: middle;
+}
+
+button, input {
+	line-height: normal;
+}
+
+button, input[type="button"], input[type="reset"], input[type="submit"] {
+	cursor: pointer;
+	-webkit-appearance: button;
+	*overflow: visible;
+}
+
+button[disabled], input[disabled] {
+	cursor: default;
+}
+
+input[type="checkbox"], input[type="radio"] {
+	box-sizing: border-box;
+	padding: 0;
+	*height: 13px;
+	*width: 13px;
+}
+
+input[type="search"] {
+	-webkit-appearance: textfield;
+	-moz-box-sizing: content-box;
+	-webkit-box-sizing: content-box;
+	box-sizing: content-box;
+}
+
+input[type="search"]::-webkit-search-decoration, input[type="search"]::-webkit-search-cancel-button {
+	-webkit-appearance: none;
+}
+
+button::-moz-focus-inner, input::-moz-focus-inner {
+	border: 0;
+	padding: 0;
+}
+
+input[type="text"], textarea {
+  outline: none;
+}
+
+textarea {
+	overflow: auto;
+	vertical-align: top;
+}
+
+// placeholder text color
+::-webkit-input-placeholder { color: $placeholder-text-color; }
+:-moz-placeholder { color: $placeholder-text-color; }
+:-ms-placeholder { color: $placeholder-text-color; }
+.placeholder { color: $placeholder-text-color; }
+
+// TABLES
+// -------
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}

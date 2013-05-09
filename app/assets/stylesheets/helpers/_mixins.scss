@@ -1,0 +1,233 @@
+// GENERAL
+// --------------------
+
+// clearfix
+// -------
+
+@mixin clearfix () {
+  *zoom: 1;
+  &:before,
+  &:after {
+    display: table;
+    content: "";
+  }
+  &:after {
+    clear: both;
+  }
+}
+
+// image replacement (http://www.zeldman.com/2012/03/01/replacing-the-9999px-hack-new-image-replacement/)
+// ------
+
+@mixin hidetext () {
+  display: block;
+  overflow: hidden;
+  text-indent: 100%;
+  white-space: nowrap;
+}
+
+// text ellipis
+// -------
+
+@mixin ellipsis () {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+// ie7 inline block fix
+// -------
+
+@mixin ie7-inline-block () {
+  *display: inline;
+  *zoom: 1;
+}
+
+// intrinsic ratio height
+// -------
+
+@mixin intrinsicheight ($width, $height, $percent: 100%, $child: true) {
+  position: relative;
+  height: 0;
+  padding-bottom: ($height / $width) * $percent;
+
+  @if $child {
+    & > :first-child {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
+
+@mixin vtext () {
+  display: table;
+  & > :first-child {
+    display: table-cell;
+    vertical-align: middle;
+  }
+}
+
+// CSS 3 STYLES
+// --------------------
+
+// box shadow
+// -------
+
+@mixin boxshadow($vars) {
+  box-shadow: $vars;
+  -o-box-shadow: $vars;
+  -ms-box-shadow: $vars;
+  -moz-box-shadow: $vars;
+  -webkit-box-shadow: $vars;
+}
+
+// border radius
+// -------
+
+@mixin borderradius($radius) {
+  border-radius: $radius;
+  -o-border-radius: $radius;
+  -ms-border-radius: $radius;
+  -moz-border-radius: $radius;
+  -webkit-border-radius: $radius;
+}
+
+@mixin rgba($r, $g, $b, $a) {
+  background: rgba($r, $g, $b, $a);
+  .ie & {
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr="#{ie-hex-str(rgba($r, $g, $b, $a))}",endColorstr="#{ie-hex-str(rgba($r, $g, $b, $a))}");
+    *zoom: 1;
+  }
+}
+
+// opacity
+// -------
+
+@mixin opacity($opacity) {
+  opacity: $opacity;
+  filter: unquote("progid:DXImageTransform.Microsoft.Alpha(Opacity=#{round($opacity * 100)})");
+}
+
+// linear gradient
+// -------
+
+@mixin lineargradient($from, $to) {
+  background: $from;
+  background: linear-gradient(top, $from, $to);
+  background: -o-linear-gradient(top, $from, $to);
+  background: -ms-linear-gradient(top, $from, $to);
+  background: -moz-linear-gradient(top, $from, $to);
+  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from($from), to($to));
+  background: -webkit-linear-gradient(top, $from, $to);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#{$from}", endColorstr="#{$to}");
+}
+
+// striped gradient
+// -------
+
+@mixin gradient-striped($color, $angle: -45deg) {
+  background-color: $color;
+  background-image: -webkit-linear-gradient($angle, rgba(255,255,255,.15) 25%, transparent 25%, transparent 50%, rgba(255,255,255,.15) 50%, rgba(255,255,255,.15) 75%, transparent 75%, transparent);
+  background-image: -moz-linear-gradient($angle, rgba(255,255,255,.15) 25%, transparent 25%, transparent 50%, rgba(255,255,255,.15) 50%, rgba(255,255,255,.15) 75%, transparent 75%, transparent);
+  background-image: -ms-linear-gradient($angle, rgba(255,255,255,.15) 25%, transparent 25%, transparent 50%, rgba(255,255,255,.15) 50%, rgba(255,255,255,.15) 75%, transparent 75%, transparent);
+  background-image: -o-linear-gradient($angle, rgba(255,255,255,.15) 25%, transparent 25%, transparent 50%, rgba(255,255,255,.15) 50%, rgba(255,255,255,.15) 75%, transparent 75%, transparent);
+  background-image: linear-gradient($angle, rgba(255,255,255,.15) 25%, transparent 25%, transparent 50%, rgba(255,255,255,.15) 50%, rgba(255,255,255,.15) 75%, transparent 75%, transparent);
+}
+
+// transition
+// -------
+
+@mixin transition ($vars) {
+  transition: $vars;
+  -o-transition: $vars;
+  -ms-transition: $vars;
+  -moz-transition: $vars;
+  -webkit-transition: $vars;
+}
+
+// transform
+// -------
+
+@mixin transform ($vars) {
+  transform: $vars;
+  -o-transform: $vars;
+  -ms-transform: $vars;
+  -moz-transform: $vars;
+  -webkit-transform: $vars;
+}
+
+// animation
+// -------
+
+@mixin animation ($vars) {
+  animation: $vars;
+  -o-animation: $vars;
+  -ms-animation: $vars;
+  -moz-animation: $vars;
+  -webkit-animation: $vars;
+}
+
+// box sizing
+// -------
+
+@mixin boxsizing ($type) {
+  box-sizing: $type;
+  -o-box-sizing: $type;
+  -ms-box-sizing: $type;
+  -moz-box-sizing: $type;
+  -webkit-box-sizing: $type;
+}
+
+// GRID LAYOUT
+// --------------------
+
+// fluid layout
+// -------
+
+@mixin fluid ($columns: 12, $column-width: 6.382978723%, $gutter-width: 2.127659574%, $column-class: 'col', $offset-class: 'offset') {
+  width: 100%;
+  @include clearfix();
+
+  // column styles
+  [class*="#{$column-class}"] {
+    float: left;
+    margin-left: $gutter-width;
+    @include boxsizing(border-box);
+
+    // remove margins on first column in a row
+    &:first-child {
+      margin-left: 0;
+    }
+  }
+
+  // column widths
+  @for $i from 1 through $columns {
+    .#{$column-class}-#{$i} {
+      @include columnWidth($i, $column-width, $gutter-width);
+    }
+  }
+
+  // offsets
+  @for $i from 1 through $columns {
+    .#{$offset-class}-#{$i} {
+      @include offsetMargin($i, $column-width, $gutter-width);
+    }
+  }
+}
+
+// create column width for grid
+// -------
+
+@mixin columnWidth ($columns, $column-width, $gutter-width) {
+  width: ($column-width * $columns) + ($gutter-width * ($columns - 1));
+}
+
+// create offset margins for grid
+// -------
+
+@mixin offsetMargin ($columns, $column-width, $gutter-width) {
+  margin-left: ($column-width * $columns) + ($gutter-width * ($columns + 1));
+}

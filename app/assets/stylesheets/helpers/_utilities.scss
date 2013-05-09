@@ -1,0 +1,77 @@
+// clearfix
+// -------
+
+.clearfix {
+  @include clearfix();
+}
+
+// image replacement 
+// -------
+
+.hide-text {
+  @include hidetext();
+}
+
+// text ellipsis
+// -------
+
+.ellipsis {
+  @include ellipsis();
+}
+
+// input placeholder
+// -------
+
+.placeholder, :-moz-placeholder, ::-webkit-input-placeholder {
+  color: $placeholder-text-color;
+}
+
+// global typography
+// -------
+
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+.text-center { text-align: center; }
+
+// toggling
+// -------
+
+.hide {
+  display: none !important;
+}
+
+.show {
+  display: block !important;
+}
+
+// floats
+// ------
+
+.float-left {
+  float: left;
+}
+
+.float-right {
+  float: right;
+}
+
+// vertically-centered text
+// -------
+
+.vertical-align-wrapper {
+  display: table;
+  table-layout: fixed;
+  width: 100%;
+}
+
+.vertical-align {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+// grid layout
+// -------
+
+.row {
+  @include fluid($columns, $column-width, $gutter-width);
+}
