@@ -32,28 +32,28 @@ html {
 }
 
 html, button, input, select, textarea {
-	font-family: $base-font-family; // addresses font-family inconsistencies
-  color: $base-font-color;
-	-webkit-font-smoothing: $font-smoothing; // better text rendering in webkit
+	font-family: @base-font-family; // addresses font-family inconsistencies
+  color: @base-font-color;
+	-webkit-font-smoothing: @font-smoothing; // better text rendering in webkit
 }
 
 body {
 	margin: 0;
-	background: $body-bg;
-	font-size: $base-font-size;
-	line-height: $base-line-height;
+	background: @body-bg;
+	font-size: @base-font-size;
+	line-height: @base-line-height;
 }
 
 // LINKS
 // -------
 
 a {
-	color: $link-color;
-	text-decoration: $link-decoration;
+	color: @link-color;
+	text-decoration: @link-decoration;
 	
 	&:hover {
-		color: $link-hover-color;
-		text-decoration: $link-hover-decoration;
+		color: @link-hover-color;
+		text-decoration: @link-hover-decoration;
 	}
 }
 
@@ -62,9 +62,9 @@ a {
 
 h1, h2, h3, h4, h5, h6 {
   margin: 0;
-	font-family: $heading-font-family;
-	font-weight: $heading-font-weight;
-  color: $heading-font-color;
+	font-family: @heading-font-family;
+	font-weight: @heading-font-weight;
+  color: @heading-font-color;
 	text-rendering: optimizelegibility; // fix character spacing for headings
 }
 
@@ -77,7 +77,7 @@ b, strong {
 }
 
 blockquote {
-	margin: $base-font-size 40px;
+	margin: @base-font-size 40px;
 }
 
 dfn {
@@ -90,11 +90,11 @@ mark {
 }
 
 p, pre {
-	margin: ($base-font-size / 2) 0;
+	margin: (@base-font-size / 2) 0;
 }
 
 pre, code, kbd, samp {
-	font-family: $mono-font-family; // corrects font-family set oddly in S4/5 & Chrome
+	font-family: @mono-font-family; // corrects font-family set oddly in S4/5 & Chrome
 	_font-family: "Courier New", monospace; // IE6 font-family
 	font-size: 1em;
 }
@@ -114,7 +114,7 @@ q {
 }
 
 small {
-	font-size: $small-font-size;
+	font-size: @small-font-size;
 }
 
 sub, sup {
@@ -247,10 +247,10 @@ textarea {
 }
 
 // placeholder text color
-::-webkit-input-placeholder { color: $placeholder-text-color; }
-:-moz-placeholder { color: $placeholder-text-color; }
-:-ms-placeholder { color: $placeholder-text-color; }
-.placeholder { color: $placeholder-text-color; }
+::-webkit-input-placeholder { color: @placeholder-text-color; }
+:-moz-placeholder { color: @placeholder-text-color; }
+:-ms-placeholder { color: @placeholder-text-color; }
+.placeholder { color: @placeholder-text-color; }
 
 // TABLES
 // -------

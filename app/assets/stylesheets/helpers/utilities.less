@@ -2,28 +2,28 @@
 // -------
 
 .clearfix {
-  @include clearfix();
+  .clearfix();
 }
 
 // image replacement 
 // -------
 
 .hide-text {
-  @include hidetext();
+  .hidetext();
 }
 
 // text ellipsis
 // -------
 
 .ellipsis {
-  @include ellipsis();
+  .ellipsis();
 }
 
 // input placeholder
 // -------
 
 .placeholder, :-moz-placeholder, ::-webkit-input-placeholder {
-  color: $placeholder-text-color;
+  color: @placeholder-text-color;
 }
 
 // global typography
@@ -73,5 +73,5 @@
 // -------
 
 .row {
-  @include fluid($columns, $column-width, $gutter-width);
+  .fluid(@columns, @column-width, @gutter-width);
 }

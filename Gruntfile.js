@@ -13,10 +13,10 @@ module.exports = function (grunt) {
       }
     },
 
-    sass: {
+    less: {
       prod: {
         options: {
-          style: 'compressed'
+          yuicompress: true,
         },
         files: [{
           expand: true,
@@ -27,9 +27,6 @@ module.exports = function (grunt) {
         }]
       },
       dev: {
-        options: {
-          style: 'expanded'
-        },
         files: [{
           expand: true,
           cwd: 'app/assets/stylesheets/',
@@ -105,7 +102,7 @@ module.exports = function (grunt) {
   });
 
   grunt.loadNpmTasks('grunt-contrib-jshint');
-  grunt.loadNpmTasks('grunt-contrib-sass');
+  grunt.loadNpmTasks('grunt-contrib-less');
   grunt.loadNpmTasks('grunt-contrib-handlebars');
   grunt.loadNpmTasks('grunt-contrib-requirejs');
   grunt.loadNpmTasks('grunt-contrib-concat');
@@ -113,8 +110,8 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-uglify');
 
-  grunt.registerTask('default', ['clean:assets', 'sass:dev', 'handlebars', 'requirejs:dev', 'concat', 'clean:temp']);
-  grunt.registerTask('release', ['clean:assets', 'sass:prod', 'handlebars', 'requirejs:prod', 'concat', 'uglify', 'clean:temp']);
+  grunt.registerTask('default', ['clean:assets', 'less:dev', 'handlebars', 'requirejs:dev', 'concat', 'clean:temp']);
+  grunt.registerTask('release', ['clean:assets', 'less:prod', 'handlebars', 'requirejs:prod', 'concat', 'uglify', 'clean:temp']);
   grunt.registerTask('heroku', ['release']);
 
 };

@@ -1,0 +1,211 @@
+// GENERAL
+// --------------------
+
+// clearfix
+// -------
+
+.clearfix () {
+  *zoom: 1;
+  &:before,
+  &:after {
+    display: table;
+    content: "";
+  }
+  &:after {
+    clear: both;
+  }
+}
+
+// image replacement (http://www.zeldman.com/2012/03/01/replacing-the-9999px-hack-new-image-replacement/)
+// ------
+
+.hidetext () {
+  display: block;
+  overflow: hidden;
+  text-indent: 100%;
+  white-space: nowrap;
+}
+
+// text ellipis
+// -------
+
+.ellipsis () {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+// ie7 inline block fix
+// -------
+
+.ie7-inline-block () {
+  *display: inline;
+  *zoom: 1;
+}
+
+// intrinsic ratio height
+// -------
+
+.intrinsicheight (@width, @height, @percent: 100%) {
+  position: relative;
+  height: 0;
+  padding-bottom: (@height / @width) * @percent;
+
+  > :first-child {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.vtext () {
+  display: table;
+  > :first-child {
+    display: table-cell;
+    vertical-align: middle;
+  }
+}
+
+// CSS 3 STYLES
+// --------------------
+
+// box shadow
+// -------
+
+.boxshadow(@vars) {
+  box-shadow: @vars;
+  -o-box-shadow: @vars;
+  -ms-box-shadow: @vars;
+  -moz-box-shadow: @vars;
+  -webkit-box-shadow: @vars;
+}
+
+// border radius
+// -------
+
+.borderradius(@radius) {
+  border-radius: @radius;
+  -o-border-radius: @radius;
+  -ms-border-radius: @radius;
+  -moz-border-radius: @radius;
+  -webkit-border-radius: @radius;
+}
+
+// linear gradient
+// -------
+
+.lineargradient(@from, @to) {
+  background: @from;
+  background: linear-gradient(top, @from, @to);
+  background: -o-linear-gradient(top, @from, @to);
+  background: -ms-linear-gradient(top, @from, @to);
+  background: -moz-linear-gradient(top, @from, @to);
+  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(@from), to(@to));
+  background: -webkit-linear-gradient(top, @from, @to);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="@from", endColorstr="@to");
+}
+
+// striped gradient
+// -------
+
+.gradient-striped(@color, @angle: -45deg) {
+  background-color: @color;
+  background-image: -webkit-linear-gradient(@angle, rgba(255,255,255,.15) 25%, transparent 25%, transparent 50%, rgba(255,255,255,.15) 50%, rgba(255,255,255,.15) 75%, transparent 75%, transparent);
+  background-image: -moz-linear-gradient(@angle, rgba(255,255,255,.15) 25%, transparent 25%, transparent 50%, rgba(255,255,255,.15) 50%, rgba(255,255,255,.15) 75%, transparent 75%, transparent);
+  background-image: -ms-linear-gradient(@angle, rgba(255,255,255,.15) 25%, transparent 25%, transparent 50%, rgba(255,255,255,.15) 50%, rgba(255,255,255,.15) 75%, transparent 75%, transparent);
+  background-image: -o-linear-gradient(@angle, rgba(255,255,255,.15) 25%, transparent 25%, transparent 50%, rgba(255,255,255,.15) 50%, rgba(255,255,255,.15) 75%, transparent 75%, transparent);
+  background-image: linear-gradient(@angle, rgba(255,255,255,.15) 25%, transparent 25%, transparent 50%, rgba(255,255,255,.15) 50%, rgba(255,255,255,.15) 75%, transparent 75%, transparent);
+}
+
+// transition
+// -------
+
+.transition (@vars) {
+  transition: @vars;
+  -o-transition: @vars;
+  -ms-transition: @vars;
+  -moz-transition: @vars;
+  -webkit-transition: @vars;
+}
+
+// transform
+// -------
+
+.transform (@vars) {
+  transform: @vars;
+  -o-transform: @vars;
+  -ms-transform: @vars;
+  -moz-transform: @vars;
+  -webkit-transform: @vars;
+}
+
+// animation
+// -------
+
+.animation (@vars) {
+  animation: @vars;
+  -o-animation: @vars;
+  -ms-animation: @vars;
+  -moz-animation: @vars;
+  -webkit-animation: @vars;
+}
+
+// box sizing
+// -------
+
+.boxsizing (@type) {
+  box-sizing: @type;
+  -o-box-sizing: @type;
+  -ms-box-sizing: @type;
+  -moz-box-sizing: @type;
+  -webkit-box-sizing: @type;
+}
+
+// GRID LAYOUT
+// --------------------
+
+// fluid layout
+// -------
+
+.fluid (@columns, @column-width, @gutter-width) {
+  width: 100%;
+  .clearfix();
+  [class*="span"] {
+    float: left;
+    margin-left: @gutter-width;
+  }
+  [class*="span"]:first-child {
+    margin-left: 0;
+  }
+
+  // generate .spanX and .offsetX
+  .spanX (@columns);
+  .offsetX (@columns);
+
+  .spanX (@index) when (@index > 0) {
+    .span@{index} { .span(@index); }
+    .spanX(@index - 1);
+  }
+  .spanX (0) {}
+
+  .offsetX (@index) when (@index > 0) {
+    .offset@{index} { .offset(@index); }
+    .offset@{index}:first-child { .offsetFirstChild(@index); }
+    .offsetX(@index - 1);
+  }
+  .offsetX (0) {}
+
+  .offset (@columns) {
+    margin-left: (@column-width * @columns) + (@gutter-width * (@columns - 1)) + (@gutter-width*2);
+  }
+
+  .offsetFirstChild (@columns) {
+    margin-left: (@column-width * @columns) + (@gutter-width * (@columns - 1)) + (@gutter-width);
+  }
+
+  .span (@columns) {
+    width: (@column-width * @columns) + (@gutter-width * (@columns - 1));
+  }
+}
