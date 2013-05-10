@@ -14,6 +14,7 @@ Notable dependencies include:
 useful build tools).
 [Jade](http://jade-lang.com/) for server-side templates.
 [Handlebars](http://handlebarsjs.com/) for client-side templates.
+[LESS](http://lesscss.org/) for styling.
 [RequireJS](http://requirejs.org/)/[Almond](https://github.com/jrburke/almond)
 for module loading.
 [Backbone.js](http://backbonejs.org/) for client-side structure.
@@ -41,6 +42,7 @@ npm install
 Run the tests with:
 
 ```
+mongod
 npm test
 ```
 
