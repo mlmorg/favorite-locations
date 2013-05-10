@@ -19,6 +19,12 @@
   },
   "scripts": {
     "postinstall": "./node_modules/bower/bin/bower install",
-    "prestart": "grunt"
+    "prestart": "grunt",
+    "test": "NODE_ENV=test ./node_modules/mocha/bin/mocha spec/*-spec.js"
+  },
+  "devDependencies": {
+    "mocha": "~1.9.0",
+    "should": "~1.2.2",
+    "supertest": "~0.6.0"
   }
 }

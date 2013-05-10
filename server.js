@@ -8,6 +8,9 @@ var app = express();
 var config = require('./config/' + app.get('env'));
 config.root = __dirname + '/';
 
+// Load DB
+mongoose.connect(config.db);
+
 // Load express configuration
 require('./config/express')(app, config);
 
