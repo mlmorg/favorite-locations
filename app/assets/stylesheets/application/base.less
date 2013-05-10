@@ -2,8 +2,18 @@
 // ----------
 
 h1 {
-  font-size: 1.5em;
+  font-size: 1.4em;
   text-shadow: 1px 1px 0 @body-bg;
+  color: @disabled-color;
+}
+
+h2 {
+  font-size: 1.6em;
+  margin-bottom: 2%;
+}
+
+[href] {
+  cursor: pointer;
 }
 
 // buttons
@@ -18,4 +28,27 @@ button {
   font-size: 0.75em;
   border: 1px solid @button-highlight-color;
   .borderradius(3px);
+
+  &:disabled {
+    background: @secondary-bg;
+    border-color: @secondary-highlight;
+    color: @disabled-color;
+  }
+}
+
+// forms
+// -----
+
+input[type="text"] {
+  width: 100%;
+  font-size: 1.25em;
+  padding: 8px;
+  border: 1px solid @secondary-highlight;
+  margin-bottom: 2%;
+  .borderradius(3px);
+  .boxsizing(border-box);
+
+  &:focus {
+    border-color: @button-color;
+  }
 }
