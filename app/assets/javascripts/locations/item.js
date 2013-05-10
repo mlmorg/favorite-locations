@@ -11,8 +11,9 @@ define(function (require, exports, module) {
         title: this.model.get('name') || this.model.get('address'),
         hasAddress: !!this.model.get('name'),
         address: this.model.get('address'),
-        mapUrl: this.createMapUrl(),
+        mapSrc: this.createMapUrl(),
         mapSize: this.mapSize,
+        mapUrl: app.router.url('map', { _id: this.model.get('_id') }),
         editUrl: app.router.url('edit', { _id: this.model.get('_id') })
       }
     },
