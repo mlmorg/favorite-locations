@@ -8,11 +8,18 @@ define(function (require, exports, module) {
   module.exports = Backbone.Router.extend({
     
     routes: {
-      '': 'home'
+      '': 'home',
+      'add': 'add'
     },
 
     home: function () {
       app.layout(new Locations.Views.List());
+    },
+
+    add: function () {
+      var model = new Locations.Model();
+      var view = new Locations.Views.Edit({ model: model });
+      app.layout(view);
     }
 
   });
