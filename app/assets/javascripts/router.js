@@ -15,7 +15,7 @@ define(function (require, exports, module) {
 
     home: function () {
       var collection = new Locations.Collection();
-      var view = new Locations.Views.List();
+      var view = new Locations.Views.List({ collection: collection });
       var button = new Locations.Views.AddButton();
       collection.fetch({ success: function () {
         app.layout(view, { button: button });
