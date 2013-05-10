@@ -9,7 +9,8 @@ define(function (require, exports, module) {
     
     routes: {
       '': 'home',
-      'add': 'add'
+      'add': 'add',
+      'edit/:_id': 'edit'
     },
 
     home: function () {
@@ -20,6 +21,14 @@ define(function (require, exports, module) {
       var model = new Locations.Model();
       var view = new Locations.Views.Edit({ model: model });
       app.layout(view);
+    },
+    
+    edit: function (params) {
+      var model = new Locations.Model(params);
+      var view = new Locations.Views.Edit({ model: model });
+      model.fetch({ success: function () {
+        app.layout(view);
+      } });
     }
 
   });
