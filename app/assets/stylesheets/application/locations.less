@@ -1,0 +1,27 @@
+// list styles
+// -----------
+
+#locations {
+
+  > li {
+    padding-bottom: 3%;
+    border-bottom: 1px solid @secondary-highlight;
+    margin-bottom: 3%;
+    .clearfix();
+
+    &:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+    }
+
+    .buttons {
+      float: right;
+    }
+
+    img {
+      display: block;
+      float: left;
+      margin-right: 15px;
+    }
+  }
+}
