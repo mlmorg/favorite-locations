@@ -3,8 +3,8 @@ extends ../layouts/application
 block content
   div#container
     header
-      h1 Favorite Locations
-      button(data-action="add") Add New Location
+      h1(href="/") Favorite Locations
+      button(data-action="add", href="/add") Add New Location
     div.scroll
       div.outer
         div.inner.main-wrapper
