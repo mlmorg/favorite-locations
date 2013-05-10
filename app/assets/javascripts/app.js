@@ -35,6 +35,15 @@ define(function (require, exports, module) {
 
     layout: function (view) {
       return this.setView('main', view).render();
+    },
+
+    serialize: function ($el) {
+      // quick and dirty form serialization
+      var obj = {};
+      _.each($el.serializeArray(), function (data) {
+        obj[data.name] = data.value;
+      });
+      return obj;
     }
   });
 
