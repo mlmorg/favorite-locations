@@ -41,7 +41,25 @@ define(function (require, exports, module) {
       }
     },
 
-    layout: function (view) {
+    layout: function (view, options) {
+      options = options || {};
+
+      // Remove existing button
+      if (this.$button) {
+        this.$button.remove();
+        delete this.$button;
+      }
+
+      // Add optional button
+      if (options.button) {
+        this.$button = $('<button/>', {
+          href: options.button.url,
+          text: options.button.text
+        });
+        this.$('header:first').append(this.$button);
+      }
+
+      // Insert and render the view
       return this.setView('main', view).render();
     },
 

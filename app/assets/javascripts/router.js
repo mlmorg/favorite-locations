@@ -14,7 +14,11 @@ define(function (require, exports, module) {
     },
 
     home: function () {
-      app.layout(new Locations.Views.List());
+      var view = new Locations.Views.List();
+      app.layout(view, { button: {
+        text: 'Add New Location',
+        url: this.url('add')
+      } });
     },
 
     add: function () {
