@@ -14,7 +14,7 @@ define(function (require, exports, module) {
     serialize: function () {
       return {
         title_text: this.model.isNew() ? 'Add New Location' : 'Edit Location',
-        button_text: this.model.isNew() ? 'Add Location' : 'Edit Location',
+        button_text: this.model.isNew() ? 'Add Location' : 'Save Location',
         can_delete: !this.model.isNew(),
         name: this.model.get('name'),
         address: this.model.get('address'),
