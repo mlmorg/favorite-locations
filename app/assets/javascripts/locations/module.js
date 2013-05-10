@@ -6,7 +6,8 @@ define(function (require, exports, module) {
     Views: {
       List: require('locations/list-view'),
       Edit: require('locations/edit-view'),
-      AddButton: require('locations/add-button-view')
+      AddButton: require('locations/add-button-view'),
+      Map: require('locations/map-view')
     }
   };
 

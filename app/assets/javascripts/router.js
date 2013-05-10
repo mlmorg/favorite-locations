@@ -10,7 +10,8 @@ define(function (require, exports, module) {
     routes: {
       '': 'home',
       'add': 'add',
-      'edit/:_id': 'edit'
+      'edit/:_id': 'edit',
+      'map/:_id': 'map'
     },
 
     home: function () {
@@ -31,6 +32,14 @@ define(function (require, exports, module) {
     edit: function (params) {
       var model = new Locations.Model(params);
       var view = new Locations.Views.Edit({ model: model });
+      model.fetch({ success: function () {
+        app.layout(view);
+      } });
+    },
+
+    map: function (params) {
+      var model = new Locations.Model(params);
+      var view = new Locations.Views.Map({ model: model });
       model.fetch({ success: function () {
         app.layout(view);
       } });

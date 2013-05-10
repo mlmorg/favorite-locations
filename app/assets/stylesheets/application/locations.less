@@ -16,6 +16,12 @@
 
     .buttons {
       float: right;
+
+      .map {
+        @media (max-width: 500px) {
+          display: none;
+        }
+      }
     }
 
     img {
@@ -31,4 +37,12 @@
       }
     }
   }
+}
+
+// map styles
+// ----------
+
+#map {
+  width: 100%;
+  height: 400px;
 }
