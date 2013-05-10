@@ -29,8 +29,15 @@ define(function (require, exports, module) {
       this.autocomplete = new google.maps.places.Autocomplete($address[0], options);
       google.maps.event.addListener(this.autocomplete, 'place_changed', _.bind(this.setAddress, this));
 
-      // focus on first input
-      $address.focus();
+      // focus on first input when we're dealing with a blank address
+      if (this.model.isNew()) {
+        $address.focus();
+      }
+
+      // when we're editing, make sure the form button is enabled by default
+      else {
+        this.enable();
+      }
     },
 
     setAddress: function () {
@@ -40,9 +47,13 @@ define(function (require, exports, module) {
         this.$('#location-lat').val(place.geometry.location.kb);
         this.$('#location-lng').val(place.geometry.location.lb);
 
-        // Remove disable from button
-        this.$('#location-submit').removeAttr('disabled');
+        // Enable form button
+        this.enable();
       }
+    },
+
+    enable: function () {
+      this.$('#location-submit').removeAttr('disabled');
     },
 
     disable: function () {
