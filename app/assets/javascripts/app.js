@@ -15,6 +15,14 @@ define(function (require, exports, module) {
     }
   });
 
+  // Configure jQuery Ajax
+  $.ajaxPrefilter(function (options, originalOpts, xhr) {
+    // Add /api prefix to API requests
+    if (!options.non_api) {
+      options.url = '/api' + (options.url || '');
+    }
+  });
+
   // App view
   var App = Backbone.View.extend({
     el: '#container',
