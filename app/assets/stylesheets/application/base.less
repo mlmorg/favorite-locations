@@ -1,6 +1,12 @@
 // typography
 // ----------
 
+body {
+  @media (max-width: 500px) {
+    font-size: 13px;
+  }
+}
+
 h1 {
   font-size: 1.4em;
   text-shadow: 1px 1px 0 @body-bg;
@@ -37,6 +43,10 @@ button {
   font-size: 0.75em;
   border: 1px solid @button-highlight-color;
   .borderradius(3px);
+
+  @media (max-width: 500px) {
+    font-size: 0.85em;
+  }
 
   &.danger {
     background: @danger-color;

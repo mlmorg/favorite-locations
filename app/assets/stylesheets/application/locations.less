@@ -20,8 +20,15 @@
 
     img {
       display: block;
+      width: 150px;
+      height: 150px;
       float: left;
       margin-right: 15px;
+
+      @media (max-width: 500px) {
+        width: 100px;
+        height: 100px;
+      }
     }
   }
 }
