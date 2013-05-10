@@ -9,7 +9,7 @@ var config = require('./config/' + app.get('env'));
 config.root = __dirname + '/';
 
 // Load DB
-mongoose.connect(config.db);
+mongoose.connect(process.env.MONGOHQ_URL || config.db);
 
 // Load express configuration
 require('./config/express')(app, config);
