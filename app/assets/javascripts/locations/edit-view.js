@@ -7,13 +7,15 @@ define(function (require, exports, module) {
 
     events: {
       'change input[name="address"]': 'disable',
-      'submit form': 'save'
+      'submit form': 'save',
+      'click [data-action="delete"]': 'delete'
     },
 
     serialize: function () {
       return {
         title_text: this.model.isNew() ? 'Add New Location' : 'Edit Location',
         button_text: this.model.isNew() ? 'Add Location' : 'Edit Location',
+        can_delete: !this.model.isNew(),
         name: this.model.get('name'),
         address: this.model.get('address'),
         lat: this.model.get('lat'),
@@ -67,10 +69,15 @@ define(function (require, exports, module) {
       var data = app.serialize($(e.currentTarget));
 
       // save
-      this.model.save(data);
+      this.model.save(data, { success: function () {
+        app.router.go('home');
+      } });
+    },
 
-      // return to homepage
-      app.router.go('home');
+    delete: function () {
+      this.model.destroy({ success: function () {
+        app.router.go('home');
+      } });
     }
   });
 

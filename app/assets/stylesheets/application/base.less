@@ -29,6 +29,11 @@ button {
   border: 1px solid @button-highlight-color;
   .borderradius(3px);
 
+  &.danger {
+    background: @danger-color;
+    border-color: @danger-highlight;
+  }
+
   &:disabled {
     background: @secondary-bg;
     border-color: @secondary-highlight;
