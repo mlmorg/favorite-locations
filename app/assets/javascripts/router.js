@@ -15,10 +15,8 @@ define(function (require, exports, module) {
 
     home: function () {
       var view = new Locations.Views.List();
-      app.layout(view, { button: {
-        text: 'Add New Location',
-        url: this.url('add')
-      } });
+      var button = new Locations.Views.AddButton();
+      app.layout(view, { button: button });
     },
 
     add: function () {

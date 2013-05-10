@@ -4,7 +4,8 @@ define(function (require, exports, module) {
     Model: require('locations/model'),
     Views: {
       List: require('locations/list-view'),
-      Edit: require('locations/edit-view')
+      Edit: require('locations/edit-view'),
+      AddButton: require('locations/add-button-view')
     }
   };
 
