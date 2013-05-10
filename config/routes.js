@@ -13,5 +13,6 @@ module.exports = function (app) {
   app.get('/', home.index);
   app.get('/add', home.index);
   app.get('/edit/:id', home.index);
+  app.get('/map/:id', home.index);
 
 };
