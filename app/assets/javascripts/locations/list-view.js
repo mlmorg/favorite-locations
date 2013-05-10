@@ -12,14 +12,16 @@ define(function (require, exports, module) {
     },
 
     beforeRender: function () {
-      if (!this.collection.length) {
-        return this.$el.append('<p>You currently have no favorite locations</p>');
-      }
-
       this.collection.each(function (model) {
         var view = new Item({ model: model, tagName: 'li' });
         this.insertView(view);
       }, this);
+    },
+
+    afterRender: function () {
+      if (!this.collection.length) {
+        this.$el.append('<p>You currently have no favorite locations.</p>');
+      }
     }
   });
 
