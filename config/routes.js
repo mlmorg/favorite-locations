@@ -11,6 +11,7 @@ module.exports = function (app) {
   // App Routes
   var home = require('../app/controllers/home');
   app.get('/', home.index);
-  app.get('/:id', home.index);
+  app.get('/add', home.index);
+  app.get('/edit/:id', home.index);
 
 };
