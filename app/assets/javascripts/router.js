@@ -14,9 +14,12 @@ define(function (require, exports, module) {
     },
 
     home: function () {
+      var collection = new Locations.Collection();
       var view = new Locations.Views.List();
       var button = new Locations.Views.AddButton();
-      app.layout(view, { button: button });
+      collection.fetch({ success: function () {
+        app.layout(view, { button: button });
+      } });
     },
 
     add: function () {
