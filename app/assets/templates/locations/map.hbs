@@ -1,7 +1,7 @@
 <header>
   <h3>{{title}}</h3>
+  {{#hasAddress}}
+    <h4>{{address}}</h4>
+  {{/hasAddress}}
 </header>
-{{#hasAddress}}
-  <h4>{{address}}</h4>
-{{/hasAddress}}
 <div id="map"></div>
